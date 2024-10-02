@@ -7,6 +7,7 @@ import os
 import plotly.express as px
 from utility_functions import (
     BIN_LABELS,
+    get_data_info,
     clean_ncp,
     process_mat_files_list,
     create_plotly_heatmaps,
@@ -36,13 +37,20 @@ if uploaded_file is not None:
                 extracted_files.extend([os.path.join(root, name) for name in files])
 
             # Display the extracted files and folders
-            # st.write("Extracted files and folders:")
-            # st.write(f"{type(extracted_files) = }")
-            st.write(f"{extracted_files = }")
+            with st.expander("Extracted files and folders", expanded=False):
+                # st.write("Extracted files and folders:")
+                # st.write(f"{type(extracted_files) = }")
+                st.write(f"{extracted_files = }")
+
+            with st.expander("Metadata", expanded=False):
+                msgs, params_info = get_data_info(extracted_files, verbose=True)
+                for msg in msgs:
+                    st.write(msg)
+                for p in params_info:
+                    st.write(p)
 
             for i, bin_id in enumerate(range(7)):
                 _, _, full_count_map = process_mat_files_list(bin_id, extracted_files)
-                st.write(f"{full_count_map.shape = }")
 
                 color_min, color_max = np.percentile(full_count_map, [1, 99.5])
 
