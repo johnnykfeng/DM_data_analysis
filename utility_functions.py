@@ -212,17 +212,6 @@ def create_heatmaps_w_boxes(
                 width=3,
             ),
         )
-    # fig.add_shape(
-    #     type="rect",
-    #     x0=outside_borders["left"],
-    #     y0=outside_borders["top"],
-    #     x1=outside_borders["right"],
-    #     y1=outside_borders["bot"],
-    #     line=dict(
-    #         color="purple",
-    #         width=3,
-    #     ),
-    # )
 
     # add a title
     fig.update_layout(title_text="Count map")

@@ -39,7 +39,7 @@ if uploaded_file is not None:
                 st.write(f"{extracted_files = }")
 
             with st.expander("Metadata", expanded=False):
-                msgs, params_info = get_data_info(extracted_files, verbose=True)
+                msgs, params_info = get_data_info(extracted_files, verbose=False)
                 for msg in msgs:
                     st.write(msg)
                 for p in params_info:
