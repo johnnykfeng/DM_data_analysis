@@ -22,10 +22,8 @@ if uploaded_file is not None:
     with tempfile.TemporaryDirectory() as temp_dir:
         # Save the uploaded ZIP file
         zip_path = os.path.join(temp_dir, "temp.zip")
-        # st.write(f"{zip_path = }")
         with open(zip_path, "wb") as f:
             f.write(uploaded_file.getbuffer())
-            # st.write(f"Saved the uploaded ZIP file to {zip_path}")
 
         # Unzip the contents while preserving folder structure
         with zipfile.ZipFile(zip_path, "r") as zip_ref:
@@ -38,8 +36,6 @@ if uploaded_file is not None:
 
             # Display the extracted files and folders
             with st.expander("Extracted files and folders", expanded=False):
-                # st.write("Extracted files and folders:")
-                # st.write(f"{type(extracted_files) = }")
                 st.write(f"{extracted_files = }")
 
             with st.expander("Metadata", expanded=False):
